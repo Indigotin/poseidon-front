@@ -1,0 +1,180 @@
+.logo{
+    display: block;
+    margin: auto;
+    width: 60px;
+    height: 60px;
+    background: url(https://s01.mifile.cn/i/logo-footer.png) no-repeat;
+}
+
+.contain{
+    position: relative;
+}
+.footer{
+    position: relative;
+    margin-top: 1000px;
+}
+.register{
+    /*top: 50px;*/
+    width: 900px;
+    min-height: 524px;
+    font-size: 14px;
+    /*position: absolute;*/
+    /*right: auto;*/
+    background-color: #fff;
+    margin:auto auto auto auto;
+    z-index: 4;
+}
+
+.register-mode{
+    padding: 27px 0 24px;
+    text-align: center;
+    font-size: 24px;
+    color: rgba(0,0,0,.5);
+}
+
+.color{
+    color:#f56600;
+}
+
+#account-register{
+    text-align: center;
+    font-size: 24px;
+}
+
+#account-area{
+    width:384px;
+    margin:0 auto
+}
+
+#account-area input{
+    border:1px solid rgba(0,0,0,.15);
+    margin:14px auto;
+    width:346px;
+    color:#333;
+    height: 48px;
+    line-height: 22px;
+    padding: 13px 16px 13px 14px;
+    display: block;
+}
+
+.err_tip {
+    color: #f56600;
+    margin-bottom: 5px;
+    line-height: 20px;
+}
+
+.icon_error {
+    width: 14px;
+    height: 14px;
+    margin: -1px 5px 0 0;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.err_tip span {
+    vertical-align: middle;
+}
+
+.register-btn{
+    border:none;
+    width:346px;
+    height:50px;
+    margin:14px 19px;
+    background-color: #ef5b00;
+    color:#ffffff;
+}
+
+.register-btn:hover{
+    cursor: pointer;
+}
+
+.others{
+    width:346px;
+    margin:-5px auto;
+}
+
+.ChangeLoginType{
+    color:#ef5b00;
+}
+
+.ChangeLoginType:hover{
+    cursor: pointer;
+}
+
+.RegisterAndForget{
+    /*float:right;*/
+    text-align: center;
+}
+
+.RegisterAndForget,
+.RegisterAndForget a{
+    color:#999;
+}
+
+.otherLoginType{
+    padding-top: 0;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
+
+.other-txt{
+    color:#bbb;
+    font-size: 14px;
+    margin:0 auto;
+    text-align: center;
+}
+
+.areacode{
+    width:20%;
+    height: 22px;
+    line-height: 22px;
+    padding: 13px 10px 13px 0;
+    margin-left: 10px;
+    color: #333;
+    border-right: 1px solid #e0e0e0;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.footer{
+    width:100%;
+    font-size: 14px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    background-color: white;
+    text-align: center;
+    color:#757575;
+}
+
+.footer a{
+    color:#757575;
+}
+
+.lang-select-list{
+    margin:0 auto;
+}
+
+.lang-select-list li{
+    display: inline-block;
+}
+
+.lang-select-list li a{
+    padding:0 10px;
+}
+
+.copyright{
+    margin:10px;
+}
+
+@media screen and (min-width: 2000px) {
+    .logo{
+        margin-left: 26.6%;
+    }
+
+    .login{
+        right:10%;
+    }
+}
