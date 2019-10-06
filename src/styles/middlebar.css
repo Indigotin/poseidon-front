@@ -1,198 +1,223 @@
-.site-middlebar{
-    max-width:1226px;
-    margin:0 auto;
-    height:100px;
-    line-height: 100px;
-    color:#333333;
-    font-size: 16px;
-    vertical-align: middle;
+.site-middlebar {
+  max-width: 1226px;
+  margin: 0 auto;
+  height: 100px;
+  line-height: 100px;
+  color: #333333;
+  font-size: 16px;
+  vertical-align: middle;
 }
 
-.logo-icon{
-    width:55px;
-    height:55px;
-    display: inline-block;
-    vertical-align: middle;
+.logo-icon {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.logo-icon:focus{
-    outline: none;
+.logo-icon:focus {
+  outline: none;
 }
 
-#middle-nav{
-    float: right;
-    width: 80%;
-    position: relative;
+#middle-nav {
+  position: relative;
 }
 
 #middle-nav-list {
-    position: absolute;
-    width: 100%;
-    border-top: 1px solid #e0e0e0;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.18);
-    background: #fff;
-    height: 229px;
-    left: 0;
-    z-index: 2;
-    display: none;
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.18);
+  background: #fff;
+  height: 230px;
+  left: 0;
+  z-index: 2;
+  top: 139px;
+  padding-bottom: 1px;
+  padding-top: 0.3rem;
 }
 
 
 .list-container {
-    width: 1226px;
-    height: 100%;
-    overflow: hidden;
-    margin: 0 auto;
+  width: 1226px;
+  height: 100%;
+  overflow: auto;
 }
 
 .main-list {
-    display: flex;
-    flex-flow: row;
+  display: flex;
+  flex-flow: row;
 }
 
-.itemBox{
-    display: flex;
-    flex-direction: row;
+.itemBox {
+  display: flex;
+  flex-direction: row;
 }
 
 .main-list li {
-    width: 204px;
-    height: 202px;
-    text-align: center;
+  width: 204px;
+  height: 202px;
+  text-align: center;
 }
 
 .new {
-    margin: 0 auto;
-    width: 66px;
-    height: 22px;
-    line-height: 22px;
-    vertical-align: middle;
-    padding: 1px 20px;
-    border: 1px solid #ff6700;
-    color: #ff6700;
-    font-size: 12px;
-    text-align: center;
+  margin: 0 auto;
+  width: 66px;
+  height: 22px;
+  line-height: 22px;
+  vertical-align: middle;
+  padding: 1px 20px;
+  border: 1px solid #ff6700;
+  color: #ff6700;
+  font-size: 12px;
+  text-align: center;
 }
 
-.not-new{
-    margin: 0 auto;
-    width: 66px;
-    height: 22px;
-    border:none;
+.not-new {
+  margin: 0 auto;
+  width: 66px;
+  height: 22px;
+  border: none;
 }
 
 .main-list li img {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .main-list li p {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .column-line {
-    width: 1px;
-    border:1px solid #c9c9c9;
-    border-left:none;
-    height: 100px;
-    margin-top: 40px;
-    margin-left:10px;
-    margin-right: 10px;
+  width: 1px;
+  border: 1px solid #c9c9c9;
+  border-left: none;
+  height: 100px;
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
 
 }
 
-#middle-nav > ul,
-#middle-nav > ul > li {
-    float: left;
-    padding: 0 5px;
+#middle-nav>ul,
+#middle-nav>ul>li {
+  padding: 0 5px;
 }
 
-.name{
-    font-size: 14px;
+.name {
+  font-size: 14px;
 }
 
 .price {
-    margin: 0;
-    color: #ff6709;
-    font-size: 14px;
+  margin: 0;
+  color: #ff6709;
+  font-size: 14px;
 }
 
 .search-box {
-    width: 295px;
-    height: 50px;
-    float: right;
-    line-height: 50px;
-    margin-top: 25px;
-    position: relative;
+  width: 295px;
+  height: 50px;
+  position: relative;
 }
 
-.serch-item{
-    position:absolute;
-    width:245px;
-    border:1px  darkorange solid;
-    border-top:none;
-    background-color: #ffffff;
-    z-index: 1;
-    display: none;
+.search-box .search-hover {
+  border-top: 1px darkorange solid;
+  border-right: 1px #c9c9c9 solid;
+  border-bottom: 1px darkorange solid;
+  border-left: 1px darkorange solid;
 }
 
-.serch-item .name{
-    float:left;
-    margin-left:10px;
-    color: #000000;
+.search-input {
+  height: 50px;
+  border: 1px #c9c9c9 solid;
 }
 
-.serch-item .count{
-    float: right;
-    margin-right: 20px;
-    color:#8D8D8D;
-}
-
-.serch-item a{
-    height:25px;
-    display:block;
-    line-height: 25px;
-    vertical-align: middle;
-    font-size: 12px;
-}
-
-.serch-item a:hover{
-    background-color: #bbbbbb;
-}
-
-#search {
-    margin-top: -1px;
-    height: 50px;
-    width: 245px;
-    padding-left: 10px;
-    vertical-align: middle;
-    border: 1px #c9c9c9 solid;
+.search-box .serch-icon.search-hover {
+  border-top: 1px darkorange solid;
+  border-right: 1px darkorange solid;
+  border-bottom: 1px darkorange solid;
+  border-left: none;
 }
 
 .serch-icon {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    float: right;
-    background-color: #FFFFFF;
-    border: 1px #c9c9c9 solid;
-    border-left: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-top: 1px #c9c9c9 solid;
+  border-right: 1px #c9c9c9 solid;
+  border-bottom: 1px #c9c9c9 solid;
+  border-left: none;
 }
 
-.serch-icon img{
-    opacity:0.5;
+.search-box>input {
+  height: 50px;
+  width: 245px;
 }
+
+.serch-icon img {
+  opacity: 0.5;
+}
+
+.serch-item {
+  position: absolute;
+  width: 245px;
+  border: 1px darkorange solid;
+  border-top: none;
+  background-color: #ffffff;
+  z-index: 2;
+  top: 50px;
+  left: 0;
+}
+
+.serch-item .name {
+  float: left;
+  margin-left: 10px;
+  color: #000000;
+}
+
+.serch-item .count {
+  float: right;
+  margin-right: 20px;
+  color: #8D8D8D;
+}
+
+.serch-item a {
+  height: 25px;
+  display: block;
+  line-height: 25px;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.serch-item a:hover {
+  background-color: #bbbbbb;
+}
+
+.list3 a{
+  margin: 0 0.6rem;
+}
+
+#search {
+  margin-top: -1px;
+  height: 50px;
+  width: 245px;
+  padding-left: 10px;
+  vertical-align: middle;
+  border: 1px #c9c9c9 solid;
+}
+
 
 #middle-nav input:focus {
-    color: #333333;
-    outline: none;
-    border: 1px darkorange solid;
+  color: #333333;
+  outline: none;
 }
 
 #middle-nav button:focus {
-    outline: none;
+  outline: none;
 }
 
 #`middle-nav ul {
-    margin-left: -50px;
+  margin-left: -50px;
 }
-

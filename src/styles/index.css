@@ -31,3 +31,321 @@ li{
 .clear{
   clear:both;
 }
+
+@media only screen and (max-width: 1920px), only screen and (max-device-width: 1920px) {
+
+    html,
+    body {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 1792px), only screen and (max-device-width: 1792px) {
+
+    html,
+    body {
+        font-size: 22.4px;
+    }
+}
+
+@media only screen and (max-width: 1664px), only screen and (max-device-width: 1664px) {
+
+    html,
+    body {
+        font-size: 20.8px;
+    }
+}
+
+@media only screen and (max-width: 1536px), only screen and (max-device-width: 1536px) {
+
+    html,
+    body {
+        font-size: 19.2px;
+    }
+}
+
+@media only screen and (max-width: 1408px), only screen and (max-device-width: 1408px) {
+
+    html,
+    body {
+        font-size: 17.6px;
+    }
+}
+
+@media only screen and (max-width: 1366px), only screen and (max-device-width: 1366px) {
+
+    html,
+    body {
+        font-size: 17.75px;
+    }
+}
+
+
+@media only screen and (max-width: 1080px), only screen and (max-device-width: 1080px) {
+
+    html,
+    body {
+        font-size: 13.5px;
+    }
+}
+
+@media only screen and (max-width: 960px), only screen and (max-device-width: 960px) {
+
+    html,
+    body {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {
+
+    html,
+    body {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 720px), only screen and (max-device-width: 720px) {
+
+    html,
+    body {
+        font-size: 9px;
+    }
+}
+
+@media only screen and (max-width: 640px), only screen and (max-device-width: 640px) {
+
+    html,
+    body {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
+
+    html,
+    body {
+        font-size: 7.5px;
+    }
+}
+
+@media only screen and (max-width: 540px), only screen and (max-device-width: 540px) {
+
+    html,
+    body {
+        font-size: 6.75px;
+    }
+}
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+
+    html,
+    body {
+        font-size: 6px;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/*布局*/
+
+.i-xy-center, .i-yx-center {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.i-yx-center {
+    flex-direction: column;
+}
+
+.xy-center, .yx-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yx-center {
+    flex-direction: column;
+}
+
+.i-xy-between, .i-yx-between {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.i-yx-between {
+    flex-direction: column;
+}
+
+.xy-between, .yx-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.yx-between {
+    flex-direction: column;
+}
+
+.jf-start {
+    justify-content: flex-start;
+}
+
+.jf-end {
+    justify-content: flex-end;
+}
+
+.al-start {
+    align-items: flex-start;
+}
+
+.al-end {
+    align-items: flex-end;
+}
+
+.al-str {
+    align-items: stretch;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.no-wrap-text {
+    white-space: nowrap;
+}
+
+.one-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.two-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.table-tag-4 {
+    width: 4em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+
+.table-tag-5 {
+    width: 5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+
+.table-tag-6 {
+    width: 6em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+
+.table-tag-7 {
+    width: 7em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+
+.table-query {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #f2f2f2;
+}
+
+.table-query-item {
+    display: inline-flex;
+    background-color: #ffffff;
+    align-items: center;
+    margin-left: 3em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.table-query-item > label {
+    width: 6em;
+    text-align: center;
+}
+
+.table-query-item .table-query-input {
+    width: 15em;
+}
+
+.table-tool {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2em 0 1em 0;
+}
+
+.vue-page {
+    height: 3em;
+    text-align: right;
+    padding: 1em 0;
+}
+
+/*颜色*/
+.green {
+    color: #009688;
+}
+
+.fff {
+    color: #fff;
+}
+
+.back-fff-box {
+    background-color: #fff;
+}
+
+.c-999 {
+    color: #999999;
+}
+
+/*其他*/
+
+.border-radius-box {
+    border-radius: 0.5rem;
+}
+
+
+.margin-top-box {
+    margin-top: 1rem;
+}
+
+
+.bold {
+    font-weight: bold;
+}
+
+.left-title {
+    margin-right: 0.33rem;
+}
+
+.member-header {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.pointer {
+    cursor: pointer;
+}
