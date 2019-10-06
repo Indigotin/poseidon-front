@@ -121,10 +121,7 @@
 }
 
 .search-box .search-hover {
-  border-top: 1px darkorange solid;
-  border-right: 1px #c9c9c9 solid;
-  border-bottom: 1px darkorange solid;
-  border-left: 1px darkorange solid;
+  border: 1px darkorange solid;
 }
 
 .search-input {
@@ -216,8 +213,4 @@
 
 #middle-nav button:focus {
   outline: none;
-}
-
-#`middle-nav ul {
-  margin-left: -50px;
 }

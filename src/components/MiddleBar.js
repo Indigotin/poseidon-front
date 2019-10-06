@@ -7,10 +7,6 @@ import $ from 'jquery';
 import { ItemCartModel } from '../model/ItemCatModel';
 import { ItemModel } from '../model/ItemModel';
 import search from '../img/search.png';
-import { Select } from 'antd';
-import Search from 'antd/lib/transfer/search';
-
-const { Option } = Select;
 
 class MiddleBar extends Component {
   constructor(props) {
@@ -111,7 +107,7 @@ class MiddleBar extends Component {
           <div className="site-middlebar i-xy-between full-width">
             <div className='i-xy-between'>
               <a href="/"><img className="logo-icon" src="https://s01.mifile.cn/i/logo-footer.png?v2" alt='' /></a>
-              <div className='list3 i-xy-center' onMouseLeave={(e) => {
+              <div className='list3 i-xy-center' onMouseLeave={() => {
                 if (state.navShowState === 1) {
                   this.setState({
                     navShowState: 0
@@ -146,7 +142,7 @@ class MiddleBar extends Component {
                     }
                   } />
                 {
-                  <div className="serch-item" style={{ zIndex: state.searchListShow ? '1' : '-2' }}>
+                  <div className="serch-item" style={{ display: state.searchListShow ? 'block' : 'none' }}>
                     {
                       searchData.map(data => {
                         return <a href="/" key={data.key}><p className="name">{data.key}</p><p className="count">{data.desc}</p></a>;
@@ -172,7 +168,7 @@ class MiddleBar extends Component {
                 }
               }
               onMouseLeave={
-                (e) => {
+                () => {
                   if (state.navShowState === 2) {
                     this.setState({
                       navShowState: 0
