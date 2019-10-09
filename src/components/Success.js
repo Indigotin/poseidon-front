@@ -13,7 +13,7 @@ class Success extends Component {
     return (
       <div>
         <TopBar/>
-        <MiddleBar/>
+        <MiddleBar history={this.props.history}/>
         <div className="buy-succ-box">
           <div className="goods-content">
             <div className="goods-img">

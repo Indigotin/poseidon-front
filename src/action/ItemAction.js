@@ -23,3 +23,22 @@ export async function fetchItem(id) {
       console.error(error);
     });
 }
+
+export async function fetchItemList(searchValue) {
+  return await fetch(`${ITEM}/search/${searchValue}`, {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  }).then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      return new Error('请求错误');
+    }
+  }).then(json => {
+    return json.data;
+  })
+    .catch(error => {
+      console.error(error);
+    });
+}

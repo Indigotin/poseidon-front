@@ -12,7 +12,7 @@ class Personal extends Component {
     return (
       <div>
         <TopBar/>
-        <MiddleBar/>
+        <MiddleBar history={this.props.history}/>
         <div className="main-page">
 
           <div className="breadcrumbs">

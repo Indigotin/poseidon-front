@@ -7,7 +7,7 @@ import {deleteCart, fetchCartByUserName, updateCart} from '../action/CartAction'
 import {NETWORK_BUSY} from '../constants/Constants';
 import {CartModel} from '../model/CartModel';
 import {fetchRecommendItems} from '../action/EsAction';
-
+import {addCart} from '../action/CartAction';
 
 class Cart extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class Cart extends Component {
     this.state = {
       curUser: localStorage.getItem('curUser'),
       carts: [CartModel],
+      cart: CartModel,
       count: 0,
       totalPrice: 0,
       fetching: true,
@@ -27,16 +28,44 @@ class Cart extends Component {
     const {curUser} = this.state;
     const cartsData = await fetchCartByUserName(curUser);
     const itemIds = cartsData.map(cart => cart.itemId);
-    const msg = await fetchRecommendItems(itemIds, 1, 10);
+    let msg = await fetchRecommendItems(itemIds, 1, 10);
     this.setState({
       carts: cartsData,
       fetching: false,
-      recommendItems: msg.data.content
+      recommendItems: msg.data[0]
     });
     $('#goCheckout').attr({
       'disabled': 'disabled',
     });
   }
+
+  async handleAddItemToCart(item) {
+    let cart = this.state.cart;
+    cart.quantity = 1;
+    cart.itemId = item.id;
+    cart.price = item.price;
+    cart.username = localStorage.getItem('curUser');
+    cart.itemImage = item.image;
+    cart.itemSellPoint = item.sellPoint;
+    cart.itemName = item.name;
+    const rep = await addCart(cart);
+    if (rep.code === 200) {
+      //   跳转到添加到购物车成功页面页面
+      // alert('将商品添加到购物车成功');
+      let data = {
+        message: '添加到购物车成功',
+        details: `${cart.itemName}.${cart.itemSellPoint}`
+      };
+      let path = {
+        pathname: '/success',
+        state: data
+      };
+      this.props.history.push(path);
+    } else {
+      alert(NETWORK_BUSY);
+    }
+  }
+
 
   //处理input标签的变化
   handleChange = (operation, index) => event => {
@@ -153,8 +182,10 @@ class Cart extends Component {
     const {curUser} = this.state;
     let carts = [...this.state.carts];
     const rep = await deleteCart(curUser, itemCartId);
+    console.log('rep',rep);
     if (rep.code === 200) {
-      carts.splice(carts.findIndex(cart => cart.itemCartId === itemCartId), 1);
+      console.log('rep.code',rep.code);
+      carts.splice(carts.findIndex(cart => cart.cartId === itemCartId), 1);
       this.setState({
         carts
       });
@@ -278,7 +309,7 @@ class Cart extends Component {
                         <div className="col-total"> {cart.price * cart.quantity}元</div>
                         <div className="col-action">
                           <p className="delete"
-                             onClick={this.handleDelete.bind(this, cart.itemCartId, cart.quantity)}>×</p>
+                             onClick={this.handleDelete.bind(this, cart.cartId, cart.quantity)}>×</p>
                         </div>
                       </div>
                     ))
@@ -311,7 +342,7 @@ class Cart extends Component {
                 <li key={index} className="recommend-list">
                   <dl>
                     <dt>
-                      <a href="/">
+                      <a href={`/item/${item.id}`}>
                         <img src={item.image} alt=""/>
                       </a>
                     </dt>
@@ -319,7 +350,7 @@ class Cart extends Component {
                       <a href="/"> {item.name}</a>
                     </dd>
                     <dd className="recommend-price">{item.price}元</dd>
-                    <dd className="addToCar"><a href="/">加入购物车</a></dd>
+                    <dd className="addToCar"><a onClick={this.handleAddItemToCart.bind(this, item)}>加入购物车</a></dd>
                   </dl>
                 </li>
             ))

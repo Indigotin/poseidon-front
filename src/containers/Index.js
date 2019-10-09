@@ -77,7 +77,6 @@ class Index extends Component {
     });
   }
 
-
   render() {
     const {categories, panels, items, fetching} = this.state;
     if (fetching) {
@@ -90,7 +89,7 @@ class Index extends Component {
     return (
       <div>
         <TopBar/>
-        <MiddleBar/>
+        <MiddleBar history={this.props.history}/>
         <div id="main">
           <div id="main-img">
             <div className="site-left">

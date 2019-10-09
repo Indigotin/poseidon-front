@@ -27,8 +27,8 @@ export async function fetchCartByUserName(username) {
 /**
  * 根据购物车id删除购物车中的商品`
  */
-export async function deleteCart(username, itemId) {
-  return await fetch(`${WEB_CART_SERVICE}/delete/${username}/${itemId}`, {
+export async function deleteCart(username, cartId) {
+  return await fetch(`${WEB_CART_SERVICE}/delete/${username}/${cartId}`, {
     method: REQUEST_TYPE.DELETE,
     headers: new Headers({
       'Content-Type': 'application/json',

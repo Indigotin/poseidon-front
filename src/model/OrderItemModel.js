@@ -5,8 +5,6 @@ export const OrderItemModel = {
   itemNum: null,
   itemPrice: null,
   itemTotalPrice: null,
-  itemName: null,
-  itemSellPoint: null
 };
 
 export function itemToOrderItem(items) {
@@ -18,9 +16,6 @@ export function itemToOrderItem(items) {
       'itemNum': item.quantity,
       'itemPrice': item.price,
       'itemTotalPrice': item.price * item.quantity,
-      'itemName': item.itemName,
-      'itemSellPoint': item.itemSellPoint,
-      'itemImage': item.itemImage
     });
   });
   return ret;

@@ -48,7 +48,7 @@ class Category extends Component {
     return (
       <div>
         <TopBar/>
-        <MiddleBar/>
+        <MiddleBar history={this.props.history}/>
         <div className="detail-carousel">
           <Carousels/>
         </div>

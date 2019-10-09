@@ -10,12 +10,16 @@ import address from '../request/address.json';
 import CollectionCreateForm from './CustomizedForm';
 import { fetchAddByUserName } from '../action/AddressAction';
 import { addAddress } from '../action/AddressAction';
-
+import PropTypes from 'prop-types';
 
 const options = [];
 Mock.mock('/address', address);
 
 export default class UForm extends Component {
+  static propsType = {
+    func: PropTypes.func
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,9 +35,8 @@ export default class UForm extends Component {
       fetching: true,
       selectForm: {}
     };
-    //this.handleClick = this.handleClick.bind(this);
-  }
 
+  }
   //渲染
   componentDidMount() {
     axios.get('/address')
@@ -162,9 +165,10 @@ export default class UForm extends Component {
                 addresses.map(add =>
                   <div key={add.id} className="address-item"
                     style={{ border: this.state.selectForm.id === add.id ? '1px red solid' : '1px solid #e0e0e0', marginRight: '1rem' }} onClick={() => {
+                      this.props.func(add.id);
                       this.setState({
                         selectForm: add
-                      });
+                    });
                       this.form.setFieldsValue(add);
                     }}>
                     <p>{add.name}<br />{add.phone}<br />{add.address},{add.detailAddress}<br />{add.postalCode}<br />{add.addressTag}</p><br />
@@ -176,7 +180,6 @@ export default class UForm extends Component {
             onCreate={this.handleCreate} title="新建信息" okText="创建" />
         </div>
       );
-
 
     }
   }

@@ -7,13 +7,19 @@ import $ from 'jquery';
 import { ItemCartModel } from '../model/ItemCatModel';
 import { ItemModel } from '../model/ItemModel';
 import search from '../img/search.png';
+import {fetchItemList} from '../action/ItemAction'
+import PropTypes from 'prop-types';
 
 class MiddleBar extends Component {
-  constructor(props) {
-    super(props);
+  static contextTypes = {
+    router: PropTypes.object
+  }
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       categoriesDto: ItemCartModel,
       items: [ItemModel],
+      searchValue: '',
       fetching: true,
       searchData: [
         {
@@ -82,7 +88,25 @@ class MiddleBar extends Component {
 
 
   }
+  changeValue = event =>{
+    let value = event.target.value;
+    this.setState({
+      searchValue: value,
+    });
+  }
 
+  handleSearch = () => {
+    const {searchValue} = this.state;
+    fetchItemList(searchValue)
+      .then(itemListData => {
+        console.log('itemListData.list',itemListData.list);
+        let path = {
+          pathname: '/itemlist',
+          state: itemListData.list
+        };
+        this.props.history.push(path);
+      });
+  };
 
   handleChange = (index) => (event) => {
     event.stopPropagation();
@@ -140,7 +164,7 @@ class MiddleBar extends Component {
                         });
                       }, 200);
                     }
-                  } />
+                  } onChange={this.changeValue.bind(this)} />
                 {
                   <div className="serch-item" style={{ display: state.searchListShow ? 'block' : 'none' }}>
                     {
@@ -150,7 +174,7 @@ class MiddleBar extends Component {
                     }
                   </div>
                 }
-                <button className={state.searchHover ? 'serch-icon search-hover' : 'serch-icon'} >
+                <button className={state.searchHover ? 'serch-icon search-hover' : 'serch-icon'} onClick={this.handleSearch.bind(this)} >
                   <img src={search} alt="" />
                 </button>
               </div>

@@ -22,7 +22,7 @@ class Order extends Component {
       let msg = await fetchByBuyerId(buyerId, nextProps.match.params.op, this.state.curPage, 3);
       if (msg.code === 200) {
         this.setState({
-          orders: msg.data.records,
+          orders: msg.data.list,
           curPage: msg.data.current,
           pages: msg.data.pages,
           fetching: false,
@@ -39,9 +39,9 @@ class Order extends Component {
     let msg = await fetchByBuyerId(buyerId, op, curPage, 3);
     if (msg.code === 200) {
       this.setState({
-        orders: msg.data.records,
-        curPage: msg.data.current,
-        pages: msg.data.pages,
+        orders: msg.data.list,
+        curPage: msg.data.pageNum,
+        pages: msg.data.total,
         fetching: false,
       });
     } else {
@@ -50,6 +50,7 @@ class Order extends Component {
   }
 
   handleChange = (operation, cur) => async event => {
+
     const {pages, op} = this.state;
     const buyerId = localStorage.getItem('buyerId');
     if (operation === 'add' && cur < pages) {
@@ -61,10 +62,21 @@ class Order extends Component {
       curPage: cur
     });
     let msg = await fetchByBuyerId(buyerId, op, cur, 3);
+    /*msg.then(data => {
+      if(data.code === 200) {
+        console.log(data);
+        this.setState({
+          orders: data.data.list,
+          curPage: data.data.pageNum,
+        });
+      }else {
+        alert('网络错误');
+      }
+    });*/
     if (msg.code === 200) {
       this.setState({
-        orders: msg.data.records,
-        curPage: msg.data.current,
+        orders: msg.data.list,
+        curPage: msg.data.pageNum,
       });
     } else {
       alert('网络错误');
@@ -91,8 +103,8 @@ class Order extends Component {
                   }
                 </p>
                 <div className="info">
-                  <p>{order.createTime}<span className="sep">|</span> {order.buyerNick}<span className="sep"><span
-                    className="sep">|</span></span> 订单号：{order.orderId}<span className="sep">|</span> 在线支付 </p>
+                  <p>{order.createTime}<span className="sep">|</span> {order.userId}<span className="sep"><span
+                    className="sep">|</span></span> 订单号：{order.id}<span className="sep">|</span> 在线支付 </p>
                   {
                     order.status === 0 ?
                       <p>应付金额：<span
@@ -107,7 +119,7 @@ class Order extends Component {
               <div className="order-item">
                 <div>
                   {
-                    order.orderItemDtoList.map((orderItem, index) => (
+                    order.orderItemList.map((orderItem, index) => (
                       <div key={index} className="image">
                         <div>
                           <a href="/">

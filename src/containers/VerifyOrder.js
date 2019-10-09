@@ -10,22 +10,34 @@ import {clean} from '../action/CartAction';
 
 class VerifyOrder extends Component {
 
+
+//////////
+  constructor(props) {
+    super(props);
+    this.state = {
+      addressId: '',
+    };
+  }
+//////////
+
+
   static async handleAddOrder(verifyCarts, totalPrice) {
+
     const address = $('#new-address').text();
     console.log(address);
+    //////////
+    const addId = this.state.addressId;
+    //////////
     const userInfo = await fetchMemberByName(localStorage.getItem('curUser'));
     const orderItems = itemToOrderItem(verifyCarts);
     let orderInfo = {
-      'orderId': null,
+      'Id': null,
       'payment': totalPrice,
       'paymentType': null,
-      'postFee': 2,
-      'createTime': null,
-      'buyerNick': null,
-      'sellerNick': null,
-      'orderItemDtoList': orderItems,
-      'address': address,
-      'buyerId': userInfo.id
+      'postFee': 0,
+      'orderItemList': orderItems,
+      'addressId': addId,
+      'userId': userInfo.id
     };
     const msg = await addOrder(orderInfo);
     if (msg.code !== 200) {
@@ -39,6 +51,14 @@ class VerifyOrder extends Component {
       await clean(itemCartIds);
     }
   }
+  /** 获取子组件状态 */
+  getChildState = (addressId) => {
+    this.setState({
+      addressId:addressId,
+    });
+  }
+
+
 
   render() {
 
@@ -62,7 +82,7 @@ class VerifyOrder extends Component {
           <div className="checkout-box">
             <div className="section">
 
-              <UForm/>
+              <UForm func={this.getChildState}/>
 
               <div className="section-goods">
                 <div className="section-header">

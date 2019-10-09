@@ -65,7 +65,7 @@ class Item extends Component {
     } else {
       return (
         <div>
-          <MiddleBar2/>
+          <MiddleBar2 history={this.props.history}/>
           <div>
             <div className="product-box">
               <div className="nav-bar">
