@@ -10,6 +10,7 @@ import Cart from '../containers/Cart';
 import Personal from '../containers/Personal';
 import VerifyOrder from '../containers/VerifyOrder';
 import Success from '../components/Success';
+import PaySuccess from '../components/PaySuccess';
 import Orders from '../containers/Orders';
 import Register from '../containers/Register';
 
@@ -27,6 +28,7 @@ class RouteMap extends Component {
             <Route path="/cart" component={Cart}/>
             <Route path="/personal" component={Personal}/>
             <Route path="/success" component={Success}/>
+            <Route path="/PaySuccess" component={PaySuccess}/>
             <Route path="/verify/order" component={VerifyOrder}/>
             <Route path="/itemlist" component={ItemList}/>
             {/*<Route exact path="/personal" component={Center}/>*/}

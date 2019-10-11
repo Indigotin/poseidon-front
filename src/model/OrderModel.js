@@ -1,5 +1,5 @@
 export const OrderModel = {
-  orderId: null,
+  id: null,
   status: null,
   payment: null,
   paymentType: null,

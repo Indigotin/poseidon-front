@@ -4,34 +4,26 @@ import {itemToOrderItem} from '../model/OrderItemModel';
 import {addOrder} from '../action/OrderAction';
 import {NETWORK_BUSY} from '../constants/Constants';
 import UForm from './Form';
-import $ from 'jquery';
 import {fetchMemberByName} from '../action/MemberAction';
 import {clean} from '../action/CartAction';
 
 class VerifyOrder extends Component {
 
-
-//////////
   constructor(props) {
     super(props);
     this.state = {
       addressId: '',
     };
   }
-//////////
-
-
   static async handleAddOrder(verifyCarts, totalPrice) {
 
-    const address = $('#new-address').text();
-    console.log(address);
-    //////////
+    /*const address = $('#new-address').text();
+    console.log(address);*/
     const addId = this.state.addressId;
-    //////////
     const userInfo = await fetchMemberByName(localStorage.getItem('curUser'));
     const orderItems = itemToOrderItem(verifyCarts);
     let orderInfo = {
-      'Id': null,
+      'id': null,
       'payment': totalPrice,
       'paymentType': null,
       'postFee': 0,
@@ -49,8 +41,17 @@ class VerifyOrder extends Component {
         itemCartIds.push(cart.itemCartId);
       });
       await clean(itemCartIds);
+      let data = {
+        message: '订单提交成功',
+      };
+      let path = {
+        pathname: '/PaySuccess',
+        state: data
+      };
+      this.props.history.push(path);
     }
   }
+
   /** 获取子组件状态 */
   getChildState = (addressId) => {
     this.setState({
@@ -58,10 +59,7 @@ class VerifyOrder extends Component {
     });
   }
 
-
-
   render() {
-
     const curUser = localStorage.getItem('curUser');
     const {verifyCarts, totalPrice, totalQuantity} = this.props.location.state;
     return (
