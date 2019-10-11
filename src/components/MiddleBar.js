@@ -7,7 +7,6 @@ import $ from 'jquery';
 import { ItemCartModel } from '../model/ItemCatModel';
 import { ItemModel } from '../model/ItemModel';
 import search from '../img/search.png';
-import {fetchItemList} from '../action/ItemAction'
 import PropTypes from 'prop-types';
 
 class MiddleBar extends Component {
@@ -97,7 +96,7 @@ class MiddleBar extends Component {
 
   handleSearch = () => {
     const {searchValue} = this.state;
-    fetchItemList(searchValue)
+    /*fetchItemList(searchValue)
       .then(itemListData => {
         console.log('itemListData.list',itemListData.list);
         let path = {
@@ -105,7 +104,16 @@ class MiddleBar extends Component {
           state: itemListData.list
         };
         this.props.history.push(path);
-      });
+      });*/
+    if(this.props.callback) {
+      this.props.callback(searchValue);
+      return;
+    }
+    let path = {
+      pathname: '/itemlist',
+      state: searchValue
+    };
+    this.props.history.push(path);
   };
 
   handleChange = (index) => (event) => {

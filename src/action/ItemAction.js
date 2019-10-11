@@ -24,8 +24,8 @@ export async function fetchItem(id) {
     });
 }
 
-export async function fetchItemList(searchValue) {
-  return await fetch(`${ITEM}/search/${searchValue}`, {
+export async function fetchItemList(searchValue,page,size) {
+  return await fetch(`${ITEM}/search/${searchValue}/${page}/${size}`, {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),

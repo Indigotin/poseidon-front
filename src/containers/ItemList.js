@@ -1,32 +1,40 @@
 import React, {Component} from 'react';
-import MiddleBar2 from '../components/MiddleBar';
+import MiddleBar from '../components/MiddleBar';
 import '../styles/item.css';
-//import {fetchItem} from '../action/ItemAction';
-//import {ItemModel} from '../model/ItemModel';
+import {Pagination} from 'antd';
 import {addCart} from '../action/CartAction';
 import {NETWORK_BUSY} from '../constants/Constants';
 import Footer from '../components/Footer';
 import {CartModel} from '../model/CartModel';
+import {fetchItemList} from '../action/ItemAction';
 
 class ItemList extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      //fetching: true,
-      cart: CartModel
-      //curUser: localStorage.getItem('curUser')
+      cart: CartModel,
+      fetching: true,
+      page: 1,
+      size: 30,
+      total: 0
     };
   }
 
-  /*async componentDidMount() {
-    //let id = this.props.match.params.itemId;
-    //const itemData = await fetchItem(id);
-    this.setState({
-      item: itemData,
-      fetching: false
-    });
-  }*/
+  componentDidMount() {
+    this.loadData(this.props.location.state);
+    console.log("this.props.location.state:",this.props.location.state);
+  }
+
+  loadData(searchValue){
+     fetchItemList(searchValue,this.state.page,this.state.size)
+      .then(itemListData => {
+        this.setState({
+          itemListData: itemListData.list,
+          total: itemListData.total,
+          fetching: false
+        });
+      });
+  }
 
   async handleAddItemToCart(item) {
     let cart = this.state.cart;
@@ -56,16 +64,15 @@ class ItemList extends Component {
   }
 
   render() {
-    //const {fetching} = this.state;
-    const itemListData = this.props.location.state;
-    console.log('history',this.props.history);
-    console.log('itemListData',itemListData);
-    //if (fetching) {
-    //  return null;
-   // } else {
+    const {itemListData,fetching} = this.state;
+    if(fetching){
+      return null;
+    }
       return (
         <div>
-          <MiddleBar2 history={this.props.history}/>
+          <MiddleBar history={this.props.history} callback={(searchData) => {
+            this.loadData(searchData);
+          }}/>
           <div className="recommend">
             <ul >
               {
@@ -87,6 +94,19 @@ class ItemList extends Component {
                 ))
               }
             </ul>
+          </div>
+          <div className="pageBar" style={{width:'100vw',textAlign:'center'}}>
+            <Pagination pageSize={this.state.size}
+                        current={this.state.page}
+                        total={this.state.total}
+                        onChange={(current, pageSize) => {
+                          this.setState({
+                            size: pageSize,
+                            page: current
+                          }, () => {
+                            this.loadData(this.props.location.state);
+                          });
+                        }}/>
           </div>
           <Footer/>
         </div>

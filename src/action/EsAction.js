@@ -1,8 +1,8 @@
 import {ES_SERVICE_URL} from '../constants/Constants';
 import {REQUEST_TYPE} from '../model/Media';
 
-export async function fetchRecommendItems(itemIds, page, limit) {
-  return await fetch(`${ES_SERVICE_URL}/recommend/${page}/${limit}`, {
+export async function fetchRecommendItems(itemIds, limit) {
+  return await fetch(`${ES_SERVICE_URL}/recommend/${limit}`, {
     method: REQUEST_TYPE.POST,
     headers: new Headers({
       'Content-Type': 'application/json',

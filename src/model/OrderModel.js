@@ -6,7 +6,7 @@ export const OrderModel = {
   paymentTime: null,
   postFee: null,
   createTime: null,
-  Username: null,
+  username: null,
   sellerNick: null,
   orderItemDtoList: null
 };

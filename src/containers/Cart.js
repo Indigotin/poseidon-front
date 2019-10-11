@@ -28,11 +28,11 @@ class Cart extends Component {
     const {curUser} = this.state;
     const cartsData = await fetchCartByUserName(curUser);
     const itemIds = cartsData.map(cart => cart.itemId);
-    let msg = await fetchRecommendItems(itemIds, 1, 10);
+    let msg = await fetchRecommendItems(itemIds, 10);
     this.setState({
       carts: cartsData,
       fetching: false,
-      recommendItems: msg.data[0]
+      recommendItems: msg.data
     });
     $('#goCheckout').attr({
       'disabled': 'disabled',

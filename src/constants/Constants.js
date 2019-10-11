@@ -34,7 +34,6 @@ export const ADDRESS_SERVICE = `${ITEM_SERVICE}/address`;
 export const MEMBER_SERVICE = `${ITEM_SERVICE}/userInfo`;
 
 // 登录认证服务
-//export const AUTH_SERVICE_URL = `${GATEWAY_URL}/auth`;
 export const AUTH_SERVICE_URL = `${ITEM_SERVICE}/check`;
 //注册
 export const REGISTER_URL = `${ITEM_SERVICE}/register`;

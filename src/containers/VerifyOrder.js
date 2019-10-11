@@ -16,7 +16,6 @@ class VerifyOrder extends Component {
     };
   }
   static async handleAddOrder(verifyCarts, totalPrice) {
-
     /*const address = $('#new-address').text();
     console.log(address);*/
     const addId = this.state.addressId;
@@ -38,7 +37,8 @@ class VerifyOrder extends Component {
       const {verifyCarts} = this.props.location.state;
       let itemCartIds = [];
       verifyCarts.map((cart) => {
-        itemCartIds.push(cart.itemCartId);
+        itemCartIds.push(cart.cartId);
+        //itemCartIds.push(cart.itemCartId);
       });
       await clean(itemCartIds);
       let data = {

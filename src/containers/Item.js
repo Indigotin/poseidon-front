@@ -40,6 +40,7 @@ class Item extends Component {
     cart.itemSellPoint = item.sellPoint;
     cart.itemName = item.name;
     const rep = await addCart(cart);
+    console.log('rep',rep);
     if (rep.code === 200) {
       //   跳转到添加到购物车成功页面页面
       // alert('将商品添加到购物车成功');
@@ -122,7 +123,7 @@ class Item extends Component {
                     </div>
                   </div>
                   <div className="list-wrap">
-                    <div className="pro-choose">
+                    {/*<div className="pro-choose">
                       <div className="step-title">选择版本</div>
                       <ul>
                         <li>
@@ -139,8 +140,8 @@ class Item extends Component {
                         </li>
                       </ul>
                       <div className="clear"/>
-                    </div>
-                    <div className="pro-choose">
+                    </div>*/}
+                    {/*<div className="pro-choose">
                       <div className="step-title">选择颜色</div>
                       <ul>
                         <li>
@@ -148,8 +149,8 @@ class Item extends Component {
                         </li>
                       </ul>
                       <div className="clear"/>
-                    </div>
-                    <div className="pro-choose-prot">
+                    </div>*/}
+                    {/*<div className="pro-choose-prot">
                       <div className="step-title ">选择小米提供的意外保护
                         <a href="/" target="_blank" className="step-pro">了解意外保护 {'>'}</a>
                       </div>
@@ -185,8 +186,8 @@ class Item extends Component {
                           </div>
                         </li>
                       </ul>
-                    </div>
-                    <div className="pro-choose-prot">
+                    </div>*/}
+                    {/*<div className="pro-choose-prot">
                       <div className="step-title ">选择小米提供的延长保修
                         <a href="/" target="_blank" className="step-pro">{'了解延长保修'} </a>
                       </div>
@@ -207,7 +208,7 @@ class Item extends Component {
                           </div>
                         </li>
                       </ul>
-                    </div>
+                    </div>*/}
                     <div className="pro-list">
                       <ul>
                         <li>{item.name} <span>{item.price}元 </span></li>
