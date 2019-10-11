@@ -1,10 +1,12 @@
 export const OrderModel = {
   orderId: null,
+  status: null,
   payment: null,
   paymentType: null,
+  paymentTime: null,
   postFee: null,
   createTime: null,
-  buyerNick: null,
+  Username: null,
   sellerNick: null,
   orderItemDtoList: null
 };

@@ -16,11 +16,12 @@ class Order extends Component {
   }
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(this.state);
+    //console.log(this.state);
     if (nextProps.match.params.op !== this.props.match.params.op) {
       const buyerId = localStorage.getItem('buyerId');
       let msg = await fetchByBuyerId(buyerId, nextProps.match.params.op, this.state.curPage, 3);
       if (msg.code === 200) {
+        console.log('msg.data.list ',msg.data.list);
         this.setState({
           orders: msg.data.list,
           curPage: msg.data.current,
@@ -38,6 +39,7 @@ class Order extends Component {
     const {op, curPage} = this.state;
     let msg = await fetchByBuyerId(buyerId, op, curPage, 3);
     if (msg.code === 200) {
+      console.log('msg.data.list ',msg.data.list);
       this.setState({
         orders: msg.data.list,
         curPage: msg.data.pageNum,
@@ -85,6 +87,7 @@ class Order extends Component {
 
   render() {
     const {orders, fetching, curPage} = this.state;
+    console.log('orders',orders);
     if (fetching) {
       return null;
     }
@@ -103,7 +106,7 @@ class Order extends Component {
                   }
                 </p>
                 <div className="info">
-                  <p>{order.createTime}<span className="sep">|</span> {order.userId}<span className="sep"><span
+                  <p>{order.paymentTime}<span className="sep">|</span> {order.username}<span className="sep"><span
                     className="sep">|</span></span> 订单号：{order.id}<span className="sep">|</span> 在线支付 </p>
                   {
                     order.status === 0 ?
